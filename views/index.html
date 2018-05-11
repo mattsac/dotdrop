@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dot Game</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+  
+  <!-- App specific CSS -->
+  <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+  <div class="container-fluid">
+    <div id="users-device-size">
+      <div id="xs" class="visible-xs"></div>
+      <div id="sm" class="visible-sm"></div>
+      <div id="md" class="visible-md"></div>
+      <div id="lg" class="visible-lg"></div>
+    </div>
+    <div class="controls row mt-2 d-md-none">
+      <div class="col">
+        <img src="https://cdn.glitch.com/b07ea1cc-fb37-4ff3-818a-b7b5f2991c9d%2Fdot_drop_logo.png?1525791232294" class="img-fluid"/>
+      </div>
+      <div class="col col-1">
+        <div class="yourScoreBoard"><span id="yourScoreBoardScoreSM"></span></div>
+      </div>
+      <div class="col col-5">
+        <div class="highScoreBoard">High Score: <span id="highScoreBoardScoreSM"></span></div>
+      </div>
+      <div class="col col-2">
+        <span id="gameTimerSM">60</span>s
+      </div>
+      <div class="col col-2">
+        <button type="button" id="startPauseSM" class="btn btn-primary btn-sm" aria-label="Start Game" value="1">&#9658;</button>
+      </div>
+    </div>
+    <div class="controls row d-md-none">
+      <div class="col col-5" align="right">
+        <label for="speedSM">Difficulty:</label> 
+      </div>  
+      <div class="col col-7" align="left">
+        <input type="range" id="speedSM" min="10" max="100" step="10" value="10" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-sm-12 col-md-2">
+        <div class="controls row d-none d-md-block">
+          <div class="col col-sm-4 col-md-12">
+            <img src="https://cdn.glitch.com/b07ea1cc-fb37-4ff3-818a-b7b5f2991c9d%2Fdot_drop_logo.png?1525791232294" class="img-fluid"/>
+          </div>
+          <div class="col col-sm-8 col-md-12">
+            <div class="row mt-4">
+              <div class="col col-sm-12 col-md-12">
+                <div class="highScoreBoard">High Score: <span id="highScoreBoardScoreMD"></span></div>
+              </div>
+              <div class="col col-sm-12 col-md-12">
+                <div class="yourScoreBoard">SCORE: <span id="yourScoreBoardScoreMD"></span></div>
+              </div>  
+            </div>
+          </div>
+        </div>
+        <div class="controls row d-none d-md-block mt-2">
+          <div class="col col-sm-8 col-md-12">
+            <div class="row">
+              <div class="col">
+                Time: <span id="gameTimerMD">60</span>s
+              </div>
+              <div class="col">
+                <label for="speedMD">Difficulty:</label> <input type="range" id="speedMD" min="10" max="100" step="10" value="10" />
+              </div>  
+            </div>
+          </div>
+          <div class="col col-sm-4 col-md-12 mt-3 mb-3">
+            <button type="button" id="startPauseMD" class="btn btn-primary btn-sm" aria-label="Start Game" value="1">&#9658;</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-sm-6 col-md-12" id="instrTitle">
+            How to Play:
+          </div>
+          <div class="col col-sm-6 d-block d-sm-none" id="instrLink">
+            <a data-toggle="collapse" href="#instructions" aria-expanded="false" aria-controls="instructions" title="How do I play?" aria-label="Instructions on how to play.">
+              more...
+            </a>
+          </div>
+        </div>
+        <div class="row d-block d-md-none">
+          <div class="col">
+            <div class="collapse" id="instructions">
+              <div class="card card-body">
+                You have 1 minute to click as many dots as possible, and "pop" them for points.  The smaller the dot, the more points it's worth.  Can you beat your high score?  
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row d-none d-md-block">
+          <div class="col">
+            You have 1 minute to click as many dots as possible, and "pop" them for points.  The smaller the dot, the more points it's worth.  Can you beat your high score?  
+          </div>
+        </div>
+      </div>
+      <div class="col d-none d-md-block">
+        <div class="row no-gutters">
+          <div class="col">
+            <div id="gameAreaMD">
+
+            </div>
+            <div id="overlayMD"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row no-gutters d-block d-md-none">
+      <div class="col">
+        <div id="gameAreaSM">
+
+        </div>
+        <div id="overlaySM"></div>
+      </div>
+    </div>
+  </div>
+  
+    
+  <!-- Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+  
+  <!-- Site specific JS -->
+  <script src="/index.js"></script>
+  
+  <!-- Bubble pops -->
+  <audio id="audio1" src="https://cdn.glitch.com/b07ea1cc-fb37-4ff3-818a-b7b5f2991c9d%2Fpop1.mp3?1525792309979" ></audio>
+  <audio id="audio2" src="https://cdn.glitch.com/b07ea1cc-fb37-4ff3-818a-b7b5f2991c9d%2Fpop2.mp3?1525792310060" ></audio>
+</body>
+</html>
+
