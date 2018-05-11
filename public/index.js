@@ -12,7 +12,7 @@ var highScore = '';
 var highScoreBoardScore, yourScoreBoardScore, speedSetting, startPauseButton, timerCount, newDotInterval, dropDotInterval, timerObj, gameTimerTimeout, gameArea, overlay;
 
 function init() {
-  timerCount = 10;
+  timerCount = 60;
   yourScore = 0;
   
   //breaking by viewport as looping through getElementsByClassName will slower than id a little.  A jQuery find might work here, but need to test performance.
